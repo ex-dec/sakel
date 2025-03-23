@@ -1,26 +1,7 @@
 <?php
-require_once __DIR__ . '/../controller/UserController.php';
 
-$controller = new UserController();
-$action = $_GET['action'] ?? 'index';
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$method = $_SERVER['REQUEST_METHOD'];
 
-switch ($action) {
-    case 'create':
-        $controller->create();
-        break;
-    case 'store':
-        $controller->store();
-        break;
-    case 'edit':
-        $controller->edit($_GET['id']);
-        break;
-    case 'update':
-        $controller->update($_GET['id']);
-        break;
-    case 'delete':
-        $controller->delete($_GET['id']);
-        break;
-    default:
-        $controller->index();
-        break;
-}
+$router = require_once __DIR__ . '/../routes/web.php';
+$router->dispatch($method, $path);
