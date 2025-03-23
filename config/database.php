@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db = 'mvc_native';
+$db = 'sakel';
 $user = 'root';
-$pass = '';
+$pass = 'root';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -13,6 +13,8 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+    echo "Koneksi ke database berhasil!";
 } catch (\PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
+?>
