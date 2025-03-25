@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../model/User.php';
 require_once __DIR__ . '/../model/Role.php';
 
@@ -9,8 +10,9 @@ class UserController
 
     public function __construct()
     {
-        $this->user = new User();
-        $this->role = new Role();
+        $pdo = Database::connect();
+        $this->user = new User($pdo);
+        $this->role = new Role($pdo);
     }
 
     public function index()
@@ -21,32 +23,35 @@ class UserController
 
     public function create()
     {
-        $roles = $this->role->getAll();
         include __DIR__ . '/../view/user/create.php';
     }
 
     public function store()
     {
+        $role = $this->role->getByName('user');
+        $_POST['role_id'] = $role['id'];
+        $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $this->user->create($_POST);
-        header('Location: index.php');
+        header('Location: /');
     }
 
-    public function edit($id)
+    public function edit()
     {
+        $id = $_GET['id'];
         $user = $this->user->getById($id);
-        $roles = $this->role->getAll();
         include __DIR__ . '/../view/user/edit.php';
     }
 
-    public function update($id)
+    public function update()
     {
+        $id = $_GET['id'];
         $this->user->update($id, $_POST);
-        header('Location: index.php');
+        header('Location: /');
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $this->user->delete($id);
+        $this->user->delete($_POST['id']);
         header('Location: index.php');
     }
 }
