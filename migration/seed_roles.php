@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
+$pdo = Database::connect();
+
 $roles = ['admin', 'user'];
 
 foreach ($roles as $role) {

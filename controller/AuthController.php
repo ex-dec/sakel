@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../model/User.php';
 require_once __DIR__ . '/../model/Role.php';
+require_once __DIR__ . '/../helper/auth.php';
 
 class AuthController
 {
@@ -17,8 +18,10 @@ class AuthController
 
     public function loginForm()
     {
-        session_start();
-        var_dump($_SESSION['user']);
+        if (isAuthenticated()) {
+            header('Location: /admin');
+            exit;
+        }
         require_once __DIR__ . '/../view/auth/login.php';
     }
 

@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
+$pdo = Database::connect();
+
 $roleStmt = $pdo->prepare("SELECT id FROM roles WHERE name = ?");
 $roleStmt->execute(['admin']);
 $role = $roleStmt->fetch();
