@@ -3,12 +3,20 @@ require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../model/Mapel.php';
 
 // Buat objek Mapel dan ambil data semua mapel
+<<<<<<< HEAD
 // $pdo = Database::connect(); 
 // $mapelModel = new Mapel($pdo);
 // $mapelList = $mapelModel->getAll();
 ?>
 
 
+=======
+$pdo = Database::connect(); 
+$mapelModel = new Mapel($pdo);
+$mapelList = $mapelModel->getAll();
+?>
+
+>>>>>>> dbf1e1c (update materi)
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -21,6 +29,7 @@ require_once __DIR__ . '/../../model/Mapel.php';
 <div class="container mt-4">
     <h2 class="mb-3">Edit Materi</h2>
 
+<<<<<<< HEAD
     <form action="/materi/update" method="POST">
         <input type="hidden" name="id" value="<?= htmlspecialchars($materi['id']) ?>">
 
@@ -43,6 +52,25 @@ require_once __DIR__ . '/../../model/Mapel.php';
                     <?= htmlspecialchars($m['name']) ?>
                 </option>
             <?php endforeach; ?>
+=======
+    <form action="/materi/update?id=<?= htmlspecialchars($materi['id']) ?>" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Materi</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+
+            <label for="description" class="form-label">Deskripsi Materi</label>
+            <input type="text" name="description" id="description" class="form-control" required>
+
+            <label for="link" class="form-label">Link Materi</label>
+            <input type="text" name="link" id="link" class="form-control" required>
+
+            <label for="mapel_id" class="form-label">Mata Pelajaran</label>
+            <select name="mapel_id" id="mapel_id" class="form-control" required>
+                <option value="">-- Pilih Mata Pelajaran --</option>
+                <?php foreach ($mapelList as $m): ?>
+                    <option value="<?= $m['id'] ?>"><?= htmlspecialchars($m['name']) ?></option>
+                <?php endforeach; ?>
+>>>>>>> dbf1e1c (update materi)
             </select>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>

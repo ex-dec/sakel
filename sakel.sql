@@ -39,9 +39,7 @@ CREATE TABLE absensi (
 
 CREATE TABLE mapel (
     mapel_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    nama_mapel VARCHAR(100) NOT NULL,
-    user_id INTEGER NOT NULL, -- Guru mapel tetap dari user
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    nama_mapel VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE materi (
