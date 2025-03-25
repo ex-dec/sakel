@@ -5,9 +5,8 @@ class Role
 {
     private $db;
 
-    public function __construct()
+    public function __construct(PDO $pdo)
     {
-        global $pdo;
         $this->db = $pdo;
     }
 
@@ -21,6 +20,13 @@ class Role
     {
         $stmt = $this->db->prepare("SELECT * FROM roles WHERE id = ?");
         $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function getByName($name)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM roles WHERE name = ?");
+        $stmt->execute([$name]);
         return $stmt->fetch();
     }
 }

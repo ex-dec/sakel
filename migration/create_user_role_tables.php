@@ -8,10 +8,9 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS roles (
 
 $pdo->exec("CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    nis VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
     role_id INT,
-    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL,
+    password VARCHAR(255) NOT NULL,
 )");
-
-echo "Tabel user dan role berhasil dibuat.";

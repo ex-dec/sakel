@@ -5,15 +5,14 @@ class User
 {
     private $db;
 
-    public function __construct()
+    public function __construct(PDO $pdo)
     {
-        global $pdo;
         $this->db = $pdo;
     }
 
     public function getAll()
     {
-        $stmt = $this->db->query("SELECT users.*, roles.name as role_name 
+        $stmt = $this->db->query("SELECT users.*, roles.name AS role_name
                                   FROM users LEFT JOIN roles ON users.role_id = roles.id");
         return $stmt->fetchAll();
     }
@@ -25,16 +24,23 @@ class User
         return $stmt->fetch();
     }
 
+    public function getByNis($nis)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE nis = ?");
+        $stmt->execute([$nis]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create($data)
     {
-        $stmt = $this->db->prepare("INSERT INTO users (name, email, role_id) VALUES (?, ?, ?)");
-        return $stmt->execute([$data['name'], $data['email'], $data['role_id']]);
+        $stmt = $this->db->prepare("INSERT INTO users (name, nis, role_id, password) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$data['name'], $data['nis'], $data['role_id'], $data['password']]);
     }
 
     public function update($id, $data)
     {
-        $stmt = $this->db->prepare("UPDATE users SET name = ?, email = ?, role_id = ? WHERE id = ?");
-        return $stmt->execute([$data['name'], $data['email'], $data['role_id'], $id]);
+        $stmt = $this->db->prepare("UPDATE users SET name = ?, nis = ? WHERE id = ?");
+        return $stmt->execute([$data['name'], $data['nis'], $id]);
     }
 
     public function delete($id)

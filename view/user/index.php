@@ -1,9 +1,9 @@
-<a href="?action=create">Tambah User</a>
+<a href="/user/create">Tambah User</a>
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
         <th>Nama</th>
-        <th>Email</th>
+        <th>Nis</th>
         <th>Role</th>
         <th>Aksi</th>
     </tr>
@@ -11,11 +11,14 @@
         <tr>
             <td><?= $u['id'] ?></td>
             <td><?= $u['name'] ?></td>
-            <td><?= $u['email'] ?></td>
+            <td><?= $u['nis'] ?></td>
             <td><?= $u['role_name'] ?? '-' ?></td>
             <td>
-                <a href="?action=edit&id=<?= $u['id'] ?>">Edit</a> |
-                <a href="?action=delete&id=<?= $u['id'] ?>" onclick="return confirm('Hapus?')">Hapus</a>
+                <a href="/user/edit?id=<?= $u['id'] ?>">Edit</a> |
+                <form action="/user/delete" method="POST" style="display:inline;" onsubmit="return confirm('Hapus?')">
+                    <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                    <button type="submit">Hapus</button>
+                </form>
             </td>
         </tr>
     <?php endforeach; ?>
