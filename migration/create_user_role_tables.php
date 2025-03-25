@@ -14,5 +14,5 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) NOT NULL,
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
 )");
