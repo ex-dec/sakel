@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
 
 class User
 {
@@ -21,7 +20,7 @@ class User
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getByNis($nis)

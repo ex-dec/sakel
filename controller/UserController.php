@@ -34,7 +34,7 @@ class UserController
         $_POST['role_id'] = $role['id'];
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $this->user->create($_POST);
-        header('Location: /');
+        header('Location: /admin/user');
     }
 
     public function edit()
@@ -48,14 +48,15 @@ class UserController
     {
         $id = $_GET['id'];
         $this->user->update($id, $_POST);
-        header('Location: /');
+        header('Location: /admin/user');
     }
 
     public function delete()
     {
         $this->user->delete($_POST['id']);
-        header('Location: index.php');
+        header('Location: /admin/user');
     }
+
     public function isActive($active)
     {
         return $this->active === $active ? 'active' : '';
