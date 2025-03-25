@@ -7,12 +7,14 @@ class UserController
 {
     private $user;
     private $role;
+    private $active;
 
     public function __construct()
     {
         $pdo = Database::connect();
         $this->user = new User($pdo);
         $this->role = new Role($pdo);
+        $this->active = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
 
     public function index()
@@ -53,5 +55,9 @@ class UserController
     {
         $this->user->delete($_POST['id']);
         header('Location: index.php');
+    }
+    public function isActive($active)
+    {
+        return $this->active === $active ? 'active' : '';
     }
 }

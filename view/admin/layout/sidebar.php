@@ -1,13 +1,14 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Sakel</a>
+            <a href="/admin">Sakel</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">SK</a>
+            <a href="/admin">SK</a>
         </div>
         <ul class="sidebar-menu">
-            <li class=active><a class="nav-link" href="/admin"><i class="fas fa-fire"></i>General Dashboard</a></li>
+            <li class=<?= $this->isActive('/admin') ?>><a class="nav-link" href="/admin"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li class=<?= $this->isActive('/admin/user') ?>><a class="nav-link" href="/admin/user"><i class="fas fa-user"></i>User</a></li>
             <!-- <li class="menu-header">Dashboard</li>
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>General Dashboard &mdash; Stisla</title>
+    <title>Admin Dashboard &mdash; Sakel</title>
 
     <?php include_once __DIR__ . '/../dep/head.php'; ?>
 </head>
@@ -13,7 +13,7 @@
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <?php require_once __DIR__ . '/../layout/navbar.php'; ?>
-            <?php require_once __DIR__ . '/../layout/sidebar.php'; ?>
+            <?php require_once __DIR__ . '/layout/sidebar.php'; ?>
 
             <!-- Main Content -->
             <div class="main-content">

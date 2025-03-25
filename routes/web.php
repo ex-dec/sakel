@@ -7,15 +7,12 @@ $router->get('/login', ['AuthController', 'loginForm']);
 $router->post('/login', ['AuthController', 'login']);
 $router->get('/logout', ['AuthController', 'logout']);
 
-$router->get('/', ['UserController', 'index']);
-$router->get('/user', ['UserController', 'index']);
-$router->get('/user/create', ['UserController', 'create']);
-$router->get('/user/edit', ['UserController', 'edit']);
-
 $router->get('/admin', ['AdminController', 'dashboard']);
-
-$router->post('/user/store', ['UserController', 'store']);
-$router->post('/user/update', ['UserController', 'update']);
-$router->post('/user/delete', ['UserController', 'delete']);
+$router->get('/admin/user', ['UserController', 'index']);
+$router->get('/admin/user/create', ['UserController', 'create']);
+$router->get('/admin/user/edit', ['UserController', 'edit']);
+$router->post('/admin/user/store', ['UserController', 'store']);
+$router->post('/admin/user/update', ['UserController', 'update']);
+$router->post('/admin/user/delete', ['UserController', 'delete']);
 
 return $router;
