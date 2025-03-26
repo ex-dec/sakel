@@ -6,8 +6,8 @@ class MateriController{
     private $materi;
 
     public function __construct(){
-        $pdo = Database::connect();
-        $this->materi = new Materi($pdo);
+        $this->pdo = Database::connect();
+        $this->materi = new Materi($this->pdo);
     }
 
     public function index(){
@@ -17,7 +17,7 @@ class MateriController{
 
     public function create(){
         $stmt = $this->pdo->query("SELECT * FROM mapel");
-        $mapel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $materi = $stmt->fetchAll(PDO::FETCH_ASSOC);
         include __DIR__ . '/../view/materi/create.php';
     }
 
@@ -36,13 +36,17 @@ class MateriController{
         $materi = $this->materi->getById($id);
 
         $stmt = $this->pdo->query("SELECT * FROM mapel");
-        $mapel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // cek hasil query
+
+        $mapelList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($mapelList); exit();
         include __DIR__ . '/../view/materi/edit.php';
     }
     
     public function update()
     {
-        $id = $_GET['id'];
+        $id = $_POST['id'];
+        //var_dump($id);exit();
         if (!empty($_POST['name']) && !empty($_POST['link']) && !empty($_POST['description']) && !empty($_POST['mapel_id'])) {
             $this->materi->update($id,$_POST);
             header('Location: /materi'); 

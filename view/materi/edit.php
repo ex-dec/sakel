@@ -3,10 +3,11 @@ require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../model/Mapel.php';
 
 // Buat objek Mapel dan ambil data semua mapel
-$pdo = Database::connect(); 
-$mapelModel = new Mapel($pdo);
-$mapelList = $mapelModel->getAll();
+// $pdo = Database::connect(); 
+// $mapelModel = new Mapel($pdo);
+// $mapelList = $mapelModel->getAll();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -20,23 +21,28 @@ $mapelList = $mapelModel->getAll();
 <div class="container mt-4">
     <h2 class="mb-3">Edit Materi</h2>
 
-    <form action="/materi/update?id=<?= htmlspecialchars($materi['id']) ?>" method="POST">
+    <form action="/materi/update" method="POST">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($materi['id']) ?>">
+
         <div class="mb-3">
             <label for="name" class="form-label">Nama Materi</label>
-            <input type="text" name="name" id="name" class="form-control" required>
+            <input type="text" name="name" id="name" class="form-control" value="<?= htmlspecialchars($materi['name']) ?>" required>
 
             <label for="description" class="form-label">Deskripsi Materi</label>
-            <input type="text" name="description" id="description" class="form-control" required>
+            <input type="text" name="description" id="description" class="form-control" value="<?= htmlspecialchars($materi['description']) ?>" required>
 
             <label for="link" class="form-label">Link Materi</label>
-            <input type="text" name="link" id="link" class="form-control" required>
-
+            <input type="text" name="link" id="link" class="form-control" value="<?= htmlspecialchars($materi['link']) ?>" required>
             <label for="mapel_id" class="form-label">Mata Pelajaran</label>
             <select name="mapel_id" id="mapel_id" class="form-control" required>
-                <option value="">-- Pilih Mata Pelajaran --</option>
-                <?php foreach ($mapelList as $m): ?>
-                    <option value="<?= $m['id'] ?>"><?= htmlspecialchars($m['name']) ?></option>
-                <?php endforeach; ?>
+            <option value="">-- Pilih Mata Pelajaran --</option>
+            <?php foreach ($mapelList as $m): ?>
+                <?php var_dump($m);?> 
+                <option value="<?= $m['id'] ?>" <?= ($m['id'] == $materi['mapel_id']) ? 'selected' : '' ?>>
+
+                    <?= htmlspecialchars($m['name']) ?>
+                </option>
+            <?php endforeach; ?>
             </select>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>

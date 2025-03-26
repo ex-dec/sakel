@@ -26,7 +26,7 @@
                                 <a href="<?= htmlspecialchars($m['link']) ?>" class="btn btn-sm btn-info" target="_blank">Lihat Materi</a>
 
                                 <div class="d-flex justify-content-end gap-2 mt-3">
-                                    <a href="/materi/edit?id=<?= $m['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/materi/edit?id=<?= $m['id'] ?>&mapel_id=<?= $m['mapel_id'] ?>&mapel_name=<?= urlencode($m['mapel_name']) ?>" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="/materi/delete" method="POST" onsubmit="return confirm('Hapus data ini?')">
                                         <input type="hidden" name="id" value="<?= $m['id'] ?>">
                                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
