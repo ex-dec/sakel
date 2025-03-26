@@ -44,4 +44,11 @@ $router->post('/admin/siswa/store', ['SiswaController', 'store']);
 $router->get('/admin/siswa/edit', ['SiswaController', 'edit']);
 $router->post('/admin/siswa/update', ['SiswaController', 'update']);
 $router->post('/admin/siswa/delete', ['SiswaController', 'delete']);
+
+$router->get('/tugas', ['TugasController', 'index']);
+$router->get('/tugas/create', ['TugasController', 'create']);
+$router->get('/tugas/edit', ['TugasController', 'edit']);
+$router->post('/tugas/store', ['TugasController', 'store']);
+$router->post('/tugas/update', ['TugasController', 'update']);
+$router->post('/tugas/delete', ['TugasController', 'delete']);
 return $router;

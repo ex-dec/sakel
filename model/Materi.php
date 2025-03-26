@@ -42,16 +42,7 @@ class Materi{
 
     public function update($id, $data){
         $stmt = $this->db->prepare("UPDATE materi SET name = ?, link = ?, description = ?, mapel_id = ? WHERE id = ?");
-<<<<<<< HEAD
         return $stmt->execute([$data['name'], $data['link'], $data['description'], $data['mapel_id'], $id]);
-        var_dump($result); // Cek apakah query berhasil
-        var_dump($stmt->errorInfo()); // Cek jika ada error dari database
-
-        return $result;
-
-=======
-        return $stmt->execute([$data['name'],$data['link'],$data['description'],$data['mapel_id'] ], $id);
->>>>>>> dbf1e1c (update materi)
     }
 
     public function delete($id){
