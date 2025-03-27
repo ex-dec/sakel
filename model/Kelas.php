@@ -30,10 +30,10 @@ class Kelas
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create($name)
+    public function create($data)
     {
         $stmt = $this->pdo->prepare("INSERT INTO kelas (name) VALUES (?)");
-        $stmt->execute([$name]);
+        $stmt->execute([$data['name']]);
     }
 
     public function update($id, $kelas)

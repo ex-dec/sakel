@@ -40,7 +40,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form method="post" action="/admin/mapel/update">
+                                        <form method="post" action="/admin/mapel/update?id=<?= $mapel['id'] ?>">
                                             <div class="form-group row mb-4">
                                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="name">Nama</label>
                                                 <div class="col-sm-12 col-md-7">
