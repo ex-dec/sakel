@@ -19,13 +19,13 @@ class UserController
 
     public function index()
     {
-        $data = $this->user->getAll();
-        include __DIR__ . '/../view/user/index.php';
+        $data = $this->user->getAllUser();
+        include __DIR__ . '/../view/admin/user/index.php';
     }
 
     public function create()
     {
-        include __DIR__ . '/../view/user/create.php';
+        include __DIR__ . '/../view/admin/user/create.php';
     }
 
     public function store()
@@ -41,7 +41,7 @@ class UserController
     {
         $id = $_GET['id'];
         $user = $this->user->getById($id);
-        include __DIR__ . '/../view/user/edit.php';
+        include __DIR__ . '/../view/admin/user/edit.php';
     }
 
     public function update()

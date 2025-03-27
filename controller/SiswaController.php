@@ -21,13 +21,13 @@ class SiswaController
     public function index()
     {
         $data = $this->siswa->getAll();
-        include __DIR__ . '/../view/siswa/index.php';
+        include __DIR__ . '/../view/admin/siswa/index.php';
     }
 
     public function create()
     {
         $kelas = $this->kelas->getAll();
-        include __DIR__ . '/../view/siswa/create.php';
+        include __DIR__ . '/../view/admin/siswa/create.php';
     }
 
     public function store()
@@ -41,11 +41,12 @@ class SiswaController
         $id = $_GET['id'];
         $siswa = $this->siswa->getById($id);
         $kelas = $this->kelas->getAll();
-        include __DIR__ . '/../view/siswa/edit.php';
+        include __DIR__ . '/../view/admin/siswa/edit.php';
     }
 
     public function update()
     {
+        $_POST['id'] = $_GET['id'];
         $this->siswa->update($_POST);
         header('Location: /admin/siswa');
     }

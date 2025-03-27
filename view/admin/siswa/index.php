@@ -4,35 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>User &mdash; Sakel</title>
+    <title>Siswa &mdash; Sakel</title>
 
-    <?php include_once __DIR__ . '/../dep/head.php'; ?>
+    <?php include_once __DIR__ . '/../../dep/head.php'; ?>
 </head>
 
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <?php require_once __DIR__ . '/../layout/navbar.php'; ?>
-            <?php require_once __DIR__ . '/../admin/layout/sidebar.php'; ?>
+            <?php require_once __DIR__ . '/../../layout/navbar.php'; ?>
+            <?php require_once __DIR__ . '/../layout/sidebar.php'; ?>
 
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>User</h1>
+                        <h1>Siswa</h1>
                         <div class="section-header-button">
-                            <a href="/admin/user/create" class="btn btn-primary">Tambahkan Baru</a>
+                            <a href="/admin/siswa/create" class="btn btn-primary">Tambahkan Baru</a>
                         </div>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                            <div class="breadcrumb-item"><a href="#">User</a></div>
-                            <div class="breadcrumb-item">Semua User</div>
+                            <div class="breadcrumb-item"><a href="#">Siswa</a></div>
+                            <div class="breadcrumb-item">Semua Siswa</div>
                         </div>
                     </div>
                     <div class="section-body">
-                        <h2 class="section-title">User</h2>
+                        <h2 class="section-title">Siswa</h2>
                         <p class="section-lead">
-                            Anda dapat mengelola semua user disini.
+                            Anda dapat mengelola semua Siswa disini.
                         </p>
                         <div class="row mt-4">
                             <div class="col-12">
@@ -44,7 +44,7 @@
                                                     <th>No</th>
                                                     <th>NIS</th>
                                                     <th>Nama</th>
-                                                    <th>Role</th>
+                                                    <th>Kelas</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                                 <?php foreach ($data as $index => $u): ?>
@@ -58,11 +58,11 @@
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <div class="badge badge-primary"><?= $u['role_name'] ?></div>
+                                                            <div class="badge badge-primary"><?= $u['kelas_name'] ?></div>
                                                         </td>
                                                         <td>
-                                                            <a href="/admin/user/edit?id=<?= $u['id'] ?>" class="btn btn-primary">Edit</a>
-                                                            <form action="/admin/user/delete" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                                            <a href="/admin/siswa/edit?id=<?= $u['id'] ?>" class="btn btn-primary">Edit</a>
+                                                            <form action="/admin/siswa/delete" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?')">
                                                                 <input type="hidden" name="id" value="<?= $u['id'] ?>">
                                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                                             </form>
@@ -105,11 +105,11 @@
                     </div>
                 </section>
             </div>
-            <?php require_once __DIR__ . '/../layout/footer.php'; ?>
+            <?php require_once __DIR__ . '/../../layout/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once __DIR__ . '/../dep/script.php'; ?>
+    <?php include_once __DIR__ . '/../../dep/script.php'; ?>
 </body>
 
 </html>

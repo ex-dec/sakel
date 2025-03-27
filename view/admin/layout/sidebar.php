@@ -9,7 +9,10 @@
         <ul class="sidebar-menu">
             <li class=<?= $this->isActive('/admin') ?>><a class="nav-link" href="/admin"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
             <li class=<?= $this->isActive('/admin/user') ?>><a class="nav-link" href="/admin/user"><i class="fas fa-user"></i><span>User</span></a></li>
-            <li class=<?= $this->isActive('/admin/siswa') ?>><a class="nav-link" href="/admin/user"><i class="fas fa-user"></i><span>Siswa</span></a></li>
+            <li class=<?= $this->isActive('/admin/kelas') ?>><a class="nav-link" href="/admin/kelas"><i class="fas fa-user"></i><span>Kelas</span></a></li>
+            <li class=<?= $this->isActive('/admin/mapel') ?>><a class="nav-link" href="/admin/mapel"><i class="fas fa-user"></i><span>Mapel</span></a></li>
+            <li class=<?= $this->isActive('/admin/siswa') ?>><a class="nav-link" href="/admin/siswa"><i class="fas fa-user"></i><span>Siswa</span></a></li>
+            <li class=<?= $this->isActive('/admin/absensi') ?>><a class="nav-link" href="/admin/absensi"><i class="fas fa-user"></i><span>Absensi</span></a></li>
             <!-- <li class="menu-header">Dashboard</li>
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>

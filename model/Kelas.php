@@ -30,21 +30,21 @@ class Kelas
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // public function create($name)
-    // {
-    //     $stmt = $this->pdo->prepare("INSERT INTO kelas (name) VALUES (?)");
-    //     $stmt->execute([$name]);
-    // }
+    public function create($name)
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO kelas (name) VALUES (?)");
+        $stmt->execute([$name]);
+    }
 
-    // public function update($id, $name)
-    // {
-    //     $stmt = $this->pdo->prepare("UPDATE kelas SET name = ? WHERE id = ?");
-    //     $stmt->execute([$name, $id]);
-    // }
+    public function update($id, $kelas)
+    {
+        $stmt = $this->pdo->prepare("UPDATE kelas SET name = ? WHERE id = ?");
+        $stmt->execute([$kelas['name'], $id]);
+    }
 
-    // public function delete($id)
-    // {
-    //     $stmt = $this->pdo->prepare("DELETE FROM kelas WHERE id = ?");
-    //     $stmt->execute([$id]);
-    // }
+    public function delete($id)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM kelas WHERE id = ?");
+        $stmt->execute([$id]);
+    }
 }

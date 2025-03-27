@@ -15,12 +15,3 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS siswa (
     kelas_id INT,
     FOREIGN KEY (kelas_id) REFERENCES kelas(id) ON DELETE CASCADE
 )");
-
-$pdo->exec("CREATE TABLE IF NOT EXISTS absensi (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    siswa_id INT,
-    tanggal DATE,
-    status ENUM('hadir', 'izin', 'sakit', 'alpa') NOT NULL,
-    FOREIGN KEY (siswa_id) REFERENCES siswa(id) ON DELETE CASCADE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)");

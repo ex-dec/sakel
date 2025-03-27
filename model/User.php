@@ -16,6 +16,14 @@ class User
         return $stmt->fetchAll();
     }
 
+    public function getAllUser()
+    {
+        $stmt = $this->db->query("SELECT users.*, roles.name AS role_name
+                                  FROM users LEFT JOIN roles ON users.role_id = roles.id
+                                  WHERE roles.name = 'user'");
+        return $stmt->fetchAll();
+    }
+
     public function getById($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE id = ?");

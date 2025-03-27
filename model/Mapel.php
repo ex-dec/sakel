@@ -12,7 +12,7 @@ class Mapel
 
     public function getAll()
     {
-        $stmt = $this->db->query("SELECT * FROM mapel");
+        $stmt = $this->db->query("SELECT mapel.* , kelas.name as kelas_name FROM mapel JOIN kelas ON mapel.kelas_id = kelas.id");
         return $stmt->fetchAll();
     }
 
@@ -32,8 +32,8 @@ class Mapel
 
     public function create($data)
     {
-        $stmt = $this->db->prepare("INSERT INTO mapel (name) VALUES (?)");
-        return $stmt->execute([$data['name']]); // Pastikan hanya mengirim string
+        $stmt = $this->db->prepare("INSERT INTO mapel (name, kelas_id) VALUES (?, ?)");
+        return $stmt->execute([$data['name'], $data['kelas_id']]);
     }
 
     public function update($id, $data)
@@ -47,5 +47,4 @@ class Mapel
         $stmt = $this->db->prepare("DELETE FROM mapel WHERE id = ?");
         return $stmt->execute([$id]);
     }
-
 }

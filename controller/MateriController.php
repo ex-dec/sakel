@@ -1,63 +1,63 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../model/Materi.php';
+require_once __DIR__ . '/../model/Mapel.php';
 
-class MateriController{
+class MateriController
+{
     private $materi;
+    private $mapel;
+    private $active;
 
-    public function __construct(){
-        $this->pdo = Database::connect();
-        $this->materi = new Materi($this->pdo);
+    public function __construct()
+    {
+        $pdo = Database::connect();
+        $this->materi = new Materi($pdo);
+        $this->mapel = new Mapel($pdo);
+        $this->active = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
 
-    public function index(){
-        $materi = $this->materi->getAllWithMapel();
-        include __DIR__ . '/../view/materi/index.php';
+    public function index()
+    {
+        $data = $this->materi->getAll();
+        include __DIR__ . '/../view/admin/materi/index.php';
     }
 
-    public function create(){
-        $stmt = $this->pdo->query("SELECT * FROM mapel");
-        $materi = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        include __DIR__ . '/../view/materi/create.php';
+    public function create()
+    {
+        $mapel = $this->mapel->getAll();
+        include __DIR__ . '/../view/admin/materi/create.php';
     }
 
-    public function store() {
-        if (!empty($_POST['name']) && !empty($_POST['link']) && !empty($_POST['description']) && !empty($_POST['mapel_id'])) {
-            $this->materi->create($_POST);
-            header('Location: /materi'); 
-        } else {
-            echo "Semua field harus diisi!";
-        }
+    public function store()
+    {
+        $this->materi->create($_POST);
+        header('Location: /admin/materi');
     }
 
     public function edit()
     {
         $id = $_GET['id'];
-        $materi = $this->materi->getById($id);
-
-        $stmt = $this->pdo->query("SELECT * FROM mapel");
-        // cek hasil query
-
-        $mapelList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //var_dump($mapelList); exit();
-        include __DIR__ . '/../view/materi/edit.php';
+        $data = $this->materi->getById($id);
+        $mapel = $this->mapel->getAll();
+        include __DIR__ . '/../view/admin/materi/edit.php';
     }
-    
+
     public function update()
     {
         $id = $_POST['id'];
-        //var_dump($id);exit();
-        if (!empty($_POST['name']) && !empty($_POST['link']) && !empty($_POST['description']) && !empty($_POST['mapel_id'])) {
-            $this->materi->update($id,$_POST);
-            header('Location: /materi'); 
-        } else {
-            echo "Semua field harus diisi!";
-        }
+        $this->materi->update($id, $_POST);
+        header('Location: /admin/materi');
     }
 
     public function delete()
     {
         $this->materi->delete($_POST['id']);
-        header('Location:/materi');
+        header('Location: /admin/materi');
+    }
+
+    public function isActive($active)
+    {
+        return $this->active === $active ? 'active' : '';
     }
 }

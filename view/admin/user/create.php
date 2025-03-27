@@ -6,14 +6,14 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>User &mdash; Sakel</title>
 
-    <?php include_once __DIR__ . '/../dep/head.php'; ?>
+    <?php include_once __DIR__ . '/../../dep/head.php'; ?>
 </head>
 
 <body>
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
-            <?php require_once __DIR__ . '/../layout/navbar.php'; ?>
-            <?php require_once __DIR__ . '/../admin/layout/sidebar.php'; ?>
+            <?php require_once __DIR__ . '/../../layout/navbar.php'; ?>
+            <?php require_once __DIR__ . '/../layout/sidebar.php'; ?>
 
 
             <div class="main-content">
@@ -74,11 +74,10 @@
                 </section>
             </div>
 
-            <?php require_once __DIR__ . '/../layout/footer.php'; ?>
+            <?php require_once __DIR__ . '/../../layout/footer.php'; ?>
         </div>
     </div>
-
-    <?php include_once __DIR__ . '/../dep/script.php'; ?>
+    <?php include_once __DIR__ . '/../../dep/script.php'; ?>
 </body>
 
 </html>
