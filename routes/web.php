@@ -55,4 +55,7 @@ $router->post('/admin/tugas/store', ['TugasController', 'store']);
 $router->post('/admin/tugas/update', ['TugasController', 'update']);
 $router->post('/admin/tugas/delete', ['TugasController', 'delete']);
 
+$router->get('/admin/pengumpulan', ['PengumpulanController', 'indexKls']);
+$router->get('/admin/pengumpulan/index', ['PengumpulanController', 'index']);
+
 return $router;

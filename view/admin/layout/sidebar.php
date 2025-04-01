@@ -11,6 +11,9 @@
             <li class=<?= $this->isActive('/admin/user') ?>><a class="nav-link" href="/admin/user"><i class="fas fa-user"></i><span>User</span></a></li>
             <li class=<?= $this->isActive('/admin/kelas') ?>><a class="nav-link" href="/admin/kelas"><i class="fas fa-user"></i><span>Kelas</span></a></li>
             <li class=<?= $this->isActive('/admin/mapel') ?>><a class="nav-link" href="/admin/mapel"><i class="fas fa-user"></i><span>Mapel</span></a></li>
+            <li class=<?= $this->isActive('/admin/materi') ?>><a class="nav-link" href="/admin/materi"><i class="fas fa-user"></i><span>Materi</span></a></li>
+            <li class=<?= $this->isActive('/admin/tugas') ?>><a class="nav-link" href="/admin/tugas"><i class="fas fa-user"></i><span>Tugas</span></a></li>
+            <li class=<?= $this->isActive('/admin/pengumpulan') ?>><a class="nav-link" href="/admin/pengumpulan"><i class="fas fa-user"></i><span>pengumpulan</span></a></li>
             <li class=<?= $this->isActive('/admin/siswa') ?>><a class="nav-link" href="/admin/siswa"><i class="fas fa-user"></i><span>Siswa</span></a></li>
             <li class=<?= $this->isActive('/admin/absensi') ?>><a class="nav-link" href="/admin/absensi"><i class="fas fa-user"></i><span>Absensi</span></a></li>
             <!-- <li class="menu-header">Dashboard</li>
