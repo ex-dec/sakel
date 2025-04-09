@@ -29,10 +29,25 @@
                                 </div>
                                 <div class="card-wrap">
                                     <div class="card-header">
-                                        <h4>Total User</h4>
+                                        <h4>Total Siswa</h4>
                                     </div>
                                     <div class="card-body">
-                                        10
+                                        <?= $siswa; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="card card-statistic-1">
+                                <div class="card-icon bg-success">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card-header">
+                                        <h4>Total Kelas</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <?= $kelas; ?>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +62,7 @@
                                         <h4>Total Mapel</h4>
                                     </div>
                                     <div class="card-body">
-                                        42
+                                       <?= $mapel ?> 
                                     </div>
                                 </div>
                             </div>
@@ -62,22 +77,7 @@
                                         <h4>Total Tugas</h4>
                                     </div>
                                     <div class="card-body">
-                                        1,201
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                            <div class="card card-statistic-1">
-                                <div class="card-icon bg-success">
-                                    <i class="fas fa-circle"></i>
-                                </div>
-                                <div class="card-wrap">
-                                    <div class="card-header">
-                                        <h4>Total Kehadiran</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        47
+                                        <?= $tugas; ?>
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,11 @@
 <?php
 
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
+require_once $_SERVER['DOCUMENT_ROOT'] . '/helper/auth.php';
 
-$router = require_once __DIR__ . '/routes/web.php';
-$router->dispatch($method, $path);
+if (isAuthenticated()) {
+    header('Location: /' . roleCheck());
+    exit;
+} else {
+    header('Location: /login');
+    exit;
+}

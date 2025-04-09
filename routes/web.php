@@ -1,7 +1,12 @@
 <?php
 require_once __DIR__ . '/../core/Router.php';
+require_once __DIR__ . '/../helper/auth.php';
 
 $router = new Router();
+
+$router->get('/', function () {
+    checkAuthOrRedirect();
+});
 
 $router->get('/login', ['AuthController', 'loginForm']);
 $router->post('/login', ['AuthController', 'login']);
